@@ -57,16 +57,16 @@
     <h1>SIGNUP</h1>
     <form>
       <label class="name">FirstName</label>
-      <input type="text" id="fname" />
+      <input type="text" id="fname" required />
       <label class="name">LastName</label>
-      <input type="text" id="lname" />
+      <input type="text" id="lname" required />
       <label class="name">Username</label>
-      <input type="text" id="uname" />
+      <input type="text" id="uname"  required/>
       <label class="name">Password</label>
-      <input type="password" id="psw" /><br>
+      <input type="password" id="psw" required/><br>
       <label class="name">Confirm Password</label>
-      <input type="password" id="psw1" />
-      <button type="button" onclick="Signup()">
+      <input type="password" id="psw1" required />
+      <button type="submit" onclick="Signup()">
         <a href="login.html"></a>Register</button
       ><br /><br />
       <a href="login.html">login</a>
@@ -94,9 +94,10 @@
           Password == Cpassword
         ) {
           localStorage.setItem("user", JSON.stringify(user));
+          window.location.href="login.html"
         }
 
-        window.location.href="login.html"
+       
 
       }
     </script>
