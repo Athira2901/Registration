@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signup</title>
+    <style>
+      body {
+        background-color:rgb(133, 125, 125);
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      h1 {
+        text-align: center;
+        padding: 20px;
+        color: aliceblue;
+      }
+      form {
+        padding: 10px;
+        margin-left: 40%;
+        width: 382px;
+        /* margin: auto;
+        margin: 20 0 0 450px; */
+
+        border-radius: 15px;
+      }
+      label {
+        color: rgb(255, 255, 255);
+        font-size: 17px;
+        text-align: center;
+      }
+      input {
+        width: 300px;
+        height: 30px;
+        border: none;
+        border-radius: 3px;
+        padding-left: 8px;
+        margin-bottom: 15px;
+        
+      }
+      button {
+        width: 300px;
+        height: 30px;
+        border: none;
+        border-radius: 17px;
+        padding-left: 7px;
+        background-color: skyblue;
+       margin-top: 20px;
+      }
+      a{
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SIGNUP</h1>
+    <form>
+      <label class="name">FirstName</label>
+      <input type="text" id="fname" />
+      <label class="name">LastName</label>
+      <input type="text" id="lname" />
+      <label class="name">Username</label>
+      <input type="text" id="uname" />
+      <label class="name">Password</label>
+      <input type="password" id="psw" /><br>
+      <label class="name">Confirm Password</label>
+      <input type="password" id="psw1" />
+      <button type="button" onclick="Signup()">
+        <a href="login.html"></a>Register</button
+      ><br /><br />
+      <a href="login.html">login</a>
+    </form>
+    <script>
+      function Signup() {
+        let Firstname = document.getElementById("fname").value;
+        let Lastname = document.getElementById("lname").value;
+        let Username = document.getElementById("uname").value;
+        let Password = document.getElementById("psw").value;
+        let Cpassword = document.getElementById("psw1").value;
+        var user = {
+          Firstname: Firstname,
+          Lastname: Lastname,
+          Username: Username,
+          Password: Password,
+          Cpassword: Cpassword,
+        };
+        console.log(user);
+
+        if (
+          Firstname.length > 4 &&
+          Username.length > 3 &&
+          Password.length > 3 &&
+          Password == Cpassword
+        ) {
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+
+        window.location.href="login.html"
+
+      }
+    </script>
+  </body>
+</html>
