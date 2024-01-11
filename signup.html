@@ -55,7 +55,7 @@
   </head>
   <body>
     <h1>SIGNUP</h1>
-    <form>
+    <form  onsubmit="return false;">
       <label class="name">FirstName</label>
       <input type="text" id="fname" required />
       <label class="name">LastName</label>
@@ -94,7 +94,7 @@
           Password == Cpassword
         ) {
           localStorage.setItem("user", JSON.stringify(user));
-          window.location.href="login.html"
+          window.location.href="/login.html"
         }
 
        
