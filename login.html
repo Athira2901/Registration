@@ -18,26 +18,25 @@
             padding: 20px;
         }
         form{
-            padding:30px;
-            margin-left: 40%;
-            width: 382px;
-            margin: auto;
-            margin: 20 0 0 450px;
-            padding: 80px;
-            border-radius: 15px ;
-            
+            padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 382px;
+        height:max-content;
         }
         label{
             color: black;
-            font-size: 17px;
-            text-align: center;
+            font-size: 15px;
+           margin-top: -20px;
         }
         input{
             width: 300px;
-            height: 30px;
-            border: none;
-            border-radius: 3px;
-            padding-left: 8px;
+        height: 20px;
+        border: none;
+        border-radius: 25px;
+        /* padding-left: 8px; */
+        align-items: center;
         }
        button{
         width: 300px;
@@ -45,7 +44,19 @@
         border: none;
         border-radius: 17px;
         padding-left: 7px;
-        background-color:green;
+        background-color: green;
+     
+       }
+       div{
+        
+        display: flex;
+        flex-direction: column;
+        border:1px solid black;
+        height:50vh;
+        width: 400px;
+        align-items: center;
+        margin:10px auto;
+       justify-content: center;
        }
 
         
@@ -53,7 +64,7 @@
 </head>
 <body>
     <h1>LOGIN</h1>
-    <div>
+    <div >
        <label class="name">Username</label><br><br>
         <input type="text" id="username" required><br><br>
         <label class="name">Password</label><br><br>
@@ -72,8 +83,16 @@
       if(Username==credential.Username && Password==credential.Password){
         window.location.href="index.html"
         }
-        else{
-            alert("invalid username or password")
+        if (Username == "") {
+          document.getElementById("demo3").innerHTML = "Enter username";
+        } else {
+          document.getElementById("demo3").innerHTML = "";
+        }
+
+        if (Password == "") {
+          document.getElementById("demo4").innerHTML = "Enter password";
+        } else {
+          document.getElementById("demo4").innerHTML = "";
         }
     }
     </script>

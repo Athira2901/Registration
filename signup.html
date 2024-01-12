@@ -6,10 +6,19 @@
     <title>signup</title>
     <style>
       body {
-        background-color:rgb(133, 125, 125);
+        background-color: rgb(133, 125, 125);
         margin: 0;
         padding: 0;
         font-family: sans-serif;
+      }
+      .container {
+        display: flex;
+        border: 1px solid black;
+        height: 80vh;
+        width: 400px;
+        align-items: center;
+        margin: 10px auto;
+        justify-content: center;
       }
       h1 {
         text-align: center;
@@ -17,9 +26,12 @@
         color: aliceblue;
       }
       form {
-        padding: 10px;
-        margin-left: 40%;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 382px;
+        height: max-content;
         /* margin: auto;
         margin: 20 0 0 450px; */
 
@@ -27,17 +39,16 @@
       }
       label {
         color: rgb(255, 255, 255);
-        font-size: 17px;
-        text-align: center;
+        font-size: 15px;
+        margin-top: -20px;
       }
       input {
         width: 300px;
-        height: 30px;
+        height: 20px;
         border: none;
-        border-radius: 3px;
-        padding-left: 8px;
-        margin-bottom: 15px;
-        
+        border-radius: 25px;
+        /* padding-left: 8px; */
+        align-items: center;
       }
       button {
         width: 300px;
@@ -46,31 +57,47 @@
         border-radius: 17px;
         padding-left: 7px;
         background-color: skyblue;
-       margin-top: 20px;
       }
-      a{
+      a {
         color: aliceblue;
+      }
+      p {
+        color: red;
+      }
+      input{
+        text-align:center;
       }
     </style>
   </head>
   <body>
     <h1>SIGNUP</h1>
-    <form  onsubmit="return false;">
-      <label class="name">FirstName</label>
-      <input type="text" id="fname" required />
-      <label class="name">LastName</label>
-      <input type="text" id="lname" required />
-      <label class="name">Username</label>
-      <input type="text" id="uname"  required/>
-      <label class="name">Password</label>
-      <input type="password" id="psw" required/><br>
-      <label class="name">Confirm Password</label>
-      <input type="password" id="psw1" required />
-      <button type="submit" onclick="Signup()">
-        <a href="login.html"></a>Register</button
-      ><br /><br />
-      <a href="login.html">login</a>
-    </form>
+    <div class="container">
+      <form onsubmit="return false;">
+        <label class="name">FirstName</label>
+        <input type="text" id="fname" required />
+        <p id="demo1"></p>
+
+        <label class="name">LastName</label>
+        <input type="text" id="lname" required />
+        <p id="demo2"></p>
+
+        <label class="name">Username</label>
+        <input type="text" id="uname" required />
+        <p id="demo3"></p>
+
+        <label class="name">Password</label>
+        <input type="password" id="psw" required />
+        <p id="demo4"></p>
+
+        <label class="name">Confirm Password</label>
+        <input type="password" id="psw1" required />
+        <p id="demo5"></p>
+
+        <button type="submit" onclick="Signup()">Register</button>
+
+        <a href="login.html">login</a>
+      </form>
+    </div>
     <script>
       function Signup() {
         let Firstname = document.getElementById("fname").value;
@@ -94,11 +121,34 @@
           Password == Cpassword
         ) {
           localStorage.setItem("user", JSON.stringify(user));
-          window.location.href="/login.html"
+          window.location.href = "/login.html";
+        }
+        if (Firstname == "") {
+          document.getElementById("demo1").innerHTML = "Enter firstname";
+        } else {
+          document.getElementById("demo1").innerHTML = "";
+        }
+        if (Lastname == "") {
+          document.getElementById("demo2").innerHTML = "Enter lastname";
+        } else {
+          document.getElementById("demo2").innerHTML = "";
+        }
+        if (Username == "") {
+          document.getElementById("demo3").innerHTML = "Enter username";
+        } else {
+          document.getElementById("demo3").innerHTML = "";
         }
 
-       
-
+        if (Password == "") {
+          document.getElementById("demo4").innerHTML = "Enter password";
+        } else {
+          document.getElementById("demo4").innerHTML = "";
+        }
+        if (Cpassword == "") {
+          document.getElementById("demo5").innerHTML = "Enter password";
+        } else {
+          document.getElementById("demo5").innerHTML = "";
+        }
       }
     </script>
   </body>

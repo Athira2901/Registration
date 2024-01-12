@@ -11,6 +11,7 @@
       }
       .container {
         background-color: rgb(218, 174, 159);
+
         height: 100vh;
       }
       nav {
@@ -20,6 +21,19 @@
         align-items: center;
         padding: 10px;
       }
+      #card{
+        margin:40px auto;
+        display: flex;
+       flex-wrap: wrap ;
+       gap:50px;
+
+      }
+      .head{
+        text-align: center;
+        margin:0 auto;
+        padding:20px;
+        font-size:50px;
+      }
     </style>
   </head>
   <body>
@@ -27,6 +41,10 @@
       <nav>
         <h1 id="demo"></h1>
       </nav>
+      <div class="wrapper">
+     <h1 class="head">Hello ReqRes users!</h1>
+        <div id="card"></div>
+      </div>
     </div>
     <script>
       let credential = window.localStorage.getItem("user");
@@ -37,7 +55,61 @@
       fname = fname[0];
       lname = lname[0];
       fullname = fname + lname;
-      document.getElementById("demo").innerHTML = fullname.toUpperCase();
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("demo").innerText = fullname.toUpperCase();
+      });
+      function fetchingDetails() {
+        fetch("https://reqres.in/api/users?page=2")
+          .then((details) => details.json())
+          .then((result) => {
+            let userData = result.data;
+
+            userData.map((n) => {
+              let card = document.getElementById("card");
+              let cd=document.createElement("div");
+              let img = document.createElement("img");
+              let name=document.createElement("h3");
+              let email=document.createElement("p")
+              cd.style.border="1px solid black"
+              cd.style.borderRadius="10px"
+              cd.style.backgroundColor="ivory"
+              cd.style.height="200px";
+              cd.style.width="200px";
+
+              img.style.marginLeft="30px";
+              name.style.marginLeft="30px"
+              email.style.marginLeft="20px"
+              // cd.style.
+              // cd.style.
+
+              img.setAttribute("src", n.avatar);
+              img.setAttribute("alt", n.first_name);
+              name.textContent=n.first_name + " " +n.last_name
+              email.textContent=n.email
+             
+              
+              cd.appendChild(name)
+              cd.appendChild(email)
+              cd.appendChild(img);
+              card.appendChild(cd)
+
+            });
+          });
+      }
+      fetchingDetails();
     </script>
   </body>
 </html>
+<!-- 
+let card = document.getElementById("card");
+let img = document.createElement("img");
+let cd=document.createElement("div");
+
+let email=document.creatElement("p");
+
+
+img.setAttribute("src", n.avatar);
+img.setAttribute("alt", n.first_name);
+cd.appendChild(img);
+card.appendChild
+ -->
