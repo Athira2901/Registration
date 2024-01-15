@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>signup</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
       body {
         background-color: rgb(133, 125, 125);
@@ -64,8 +65,8 @@
       p {
         color: red;
       }
-      input{
-        text-align:center;
+      input {
+        text-align: center;
       }
     </style>
   </head>
@@ -99,6 +100,49 @@
       </form>
     </div>
     <script>
+      $(document).ready(function () {
+        $("#fname").blur(function () {
+          let Firstname = document.getElementById("fname").value;
+          if (Firstname == "") {
+            document.getElementById("demo1").innerHTML = "Enter firstname";
+          } else {
+            document.getElementById("demo1").innerHTML = "";
+          }
+        });
+        $("#lname").blur(function () {
+          let Lastname = document.getElementById("lname").value;
+          if (Lastname == "") {
+            document.getElementById("demo2").innerHTML = "Enter lastname";
+          } else {
+            document.getElementById("demo2").innerHTML = "";
+          }
+        });
+        $("#uname").blur(function () {
+          let Username = document.getElementById("uname").value;
+          if (Username == "") {
+            document.getElementById("demo3").innerHTML = "Enter username";
+          } else {
+            document.getElementById("demo3").innerHTML = "";
+          }
+        });
+        $("#psw").blur(function () {
+          let Password = document.getElementById("psw").value;
+          if (Password.length ===0|| (!/[a-z]/.test(Password)) || (!/[A-Z]/.test(Password))|| (!/[0-9]/.test(Password))){
+            document.getElementById("demo4").innerHTML = "Password must require atleast 1 uppercase,1lowercase and 1number";
+          } else {
+            document.getElementById("demo4").innerHTML = "";
+          }
+          
+        });
+        $("#psw1").blur(function () {
+          let Cpassword = document.getElementById("psw1").value;
+          if (Cpassword == "") {
+            document.getElementById("demo5").innerHTML = "Enter password";
+          } else {
+            document.getElementById("demo5").innerHTML = "";
+          }
+        });
+      });
       function Signup() {
         let Firstname = document.getElementById("fname").value;
         let Lastname = document.getElementById("lname").value;
@@ -118,7 +162,7 @@
           Firstname.length > 4 &&
           Username.length > 3 &&
           Password.length > 3 &&
-          Password == Cpassword
+          Password == Cpassword 
         ) {
           localStorage.setItem("user", JSON.stringify(user));
           window.location.href = "/login.html";
@@ -144,6 +188,8 @@
         } else {
           document.getElementById("demo4").innerHTML = "";
         }
+        
+        
         if (Cpassword == "") {
           document.getElementById("demo5").innerHTML = "Enter password";
         } else {

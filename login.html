@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         body{
             background-color: skyblue;
@@ -75,6 +76,24 @@
       
     </div>
     <script>
+      $(document).ready(function () {
+        $("#uname").blur(function () {
+          let Username = document.getElementById("uname").value;
+          if (Username == "") {
+            document.getElementById("demo3").innerHTML = "Enter username";
+          } else {
+            document.getElementById("demo3").innerHTML = "";
+          }
+        });
+        $("#psw").blur(function () {
+          let Password = document.getElementById("psw").value;
+          if (Password == "") {
+            document.getElementById("demo4").innerHTML = "Enter password";
+          } else {
+            document.getElementById("demo4").innerHTML = "";
+          }
+        });
+      });
         function login(){
           let  Username=document.getElementById("username").value
           let  Password=document.getElementById("password").value
